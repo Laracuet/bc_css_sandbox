@@ -483,3 +483,36 @@ div.prof_pic_section{
 	float:left;
 	margin: 0px;
 }
+
+/*jquery masonry*/
+.box {
+margin: 5px;
+padding: 5px;
+background: #fff;
+line-height: 1.4em;
+float: left;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+
+
+
+border-radius: 3px;
+border: 1px solid #CDCDCD;
+}
+
+.col1 p, col2 p{
+	margin:0px;
+}
+
+.col2 {
+width: 400px;
+height:100px;
+}
+.col1 {
+width: 400px;
+height: 220px;
+}
+.col3 {
+width: 400px;
+height:100px;
+}
