@@ -1,4 +1,5 @@
-<div class="listing half" style="width:400px; height:220px;">
+<?php $col_type = (!empty($student->skills) || (!empty($student->bio))) ? 'col1' : 'col2'; ?>
+<div class="box <?php echo $col_type;?>">
 			<header>
 				<?php $pic_src = student_picture_src($student->student_id, $student->oauth_uid, $student->picture); ?>
 				<img src="<?php echo $pic_src; ?>" width="50px" height="50px" class="float-left"/>
@@ -13,31 +14,37 @@
 			</header>
 
 			<hr>
-
+		<?php if(!empty($student->skills) || (!empty($student->bio))): ?>
 			<p>
-                <b>Skills</b>: <?php
-                if (empty($student->skills))
-					echo "Unavailable";
-                if (strlen($student->skills) > 40)
-                    echo substr($student->skills,0,40) . '...' . anchor('student/view_student/'.$student->student_id, ' More');
-                else
-                    echo $student->skills;
+                <?php
+                if (!empty($student->skills)){
+                ?>
+                <b>Skills</b>: 
+                <?php
+	                if (strlen($student->skills) > 40)
+	                    echo substr($student->skills,0,40) . '...' . anchor('student/view_student/'.$student->student_id, ' More');
+	                else
+	                    echo $student->skills;
+				}
                 ?>
 
                 <br />
-				<b>Bio</b>: <?php
-				if (empty($student->bio))
-					echo "Unavailable";
+				<?php
+				if (!empty($student->bio)){
+				?>
+				<b>Bio</b>: 
+				<?php
                 if (strlen($student->bio) > 150)
                     echo substr($student->bio,0,150) . '...' . anchor('student/view_student/'.$student->student_id, ' More');
                 else
                     echo $student->bio;
+				}
                     ?>
 
 
 			</p>
+		<?php endif; ?>
     <div>
-        <br />
 				<span class="social-links">
 					<?php
                     if (!empty($student->twitter)):
@@ -66,7 +73,7 @@
                     endif;
                     ?>
 				</span>
-        <a href="mailto:<?php echo $student->email; ?>">Contact</a>
+        <a class="social-email" href="mailto:<?php echo $student->email; ?>">Contact</a>
     </div>
 </div>
 		

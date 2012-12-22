@@ -29,7 +29,7 @@ $submit_button = array(
         <?php
     endif;
     ?>
-    <div class="grid">
+    <div id="students_container" class="clearfix">
 	<?php 
 	foreach($students as $student):
 		$data["student"] = $student;
